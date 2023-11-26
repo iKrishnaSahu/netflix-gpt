@@ -3,7 +3,8 @@
 - Created react app using npx create-react-app netflix-gtp
 - Cleaned workspace
 - Configured tailwind - <https://tailwindcss.com/docs/guides/create-react-app>
--
+- Login form
+- Sign up form
 
 ## Features
 
