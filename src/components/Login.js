@@ -3,7 +3,6 @@ import Header from './Header';
 import { checkValidData } from '../utils/vaildate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 
@@ -11,7 +10,6 @@ const Login = () => {
 
   const [showSignUpForm, setShowSignUpForm] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const email = useRef(null);
@@ -66,7 +64,6 @@ const Login = () => {
           updateProfile(user, { displayName: nameText }).then(() => {
             const { uid, displayName, email } = auth.currentUser;
             dispatch(addUser({ uid, displayName, email }))
-            navigate('/browse');
           }).catch((error) => {
             setError(`${error.message} - ${error.code}`);
           });
@@ -80,9 +77,7 @@ const Login = () => {
       signInWithEmailAndPassword(auth, emailText, passwordText)
         .then((userCredential) => {
           // Signed in 
-          // const user = userCredential.user;
-          // console.log('User logged in', user);
-          navigate('/browse');
+          // header.js contains centralized logic to handle login and logout flow uisng onAuthStateChanged
         })
         .catch((error) => {
           setError(`${error.message} - ${error.code}`);

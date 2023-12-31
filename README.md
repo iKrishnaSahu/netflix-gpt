@@ -14,6 +14,7 @@
 - create redux store with user slice
 - Update profile in firebase
 - fetch movie from TMDBs
+- show now playing movie along with trailer
 
 ## Features
 
